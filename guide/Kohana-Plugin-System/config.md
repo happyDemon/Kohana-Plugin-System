@@ -3,6 +3,10 @@
 **dir** - The relative directory of where plugins can be stored.
 
 ## Manager
+
+We tried to keep the process of managing your plugin as simple as possible,
+check the [Plugin_Manager]'s documentation for more information.
+
 **loader** - The manager driver you want to use (either Config or DB)
 
 ### Config
