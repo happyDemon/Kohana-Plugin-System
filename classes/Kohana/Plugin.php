@@ -34,11 +34,16 @@ abstract class Kohana_Plugin
 	}
 
 	/**
-	 * only run once, when installing the plugin.
+	 * Only run once, when installing the plugin.
+	 *
+	 * Overwrite this if needed.
 	 *
 	 * @return bool
 	 */
-	abstract public function _install();
+	protected function _install()
+	{
+		return true;
+	}
 
 	/**
 	 * Install a plugin if possible.

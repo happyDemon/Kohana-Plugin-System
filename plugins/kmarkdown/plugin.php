@@ -13,15 +13,6 @@ class Kmarkdown extends Plugin
 	);
 
 	/**
-	 * no install required for this plugin.
-	 *
-	 * @return bool
-	 */
-	public function _install() {
-		return true;
-	}
-
-	/**
 	 * Run when initialising the plugin when it's active.
 	 */
 	public function init() {

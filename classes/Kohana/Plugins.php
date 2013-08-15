@@ -38,6 +38,13 @@ class Kohana_Plugins
 		foreach($paths as $path)
 		{
 			$dir = $path . self::$plugins_dir;
+
+			//if there's no plugin dir skip to the next path
+			if(!file_exists($dir))
+			{
+				continue;
+			}
+
 			// Instantiate a new directory iterator object
 			$directory = new DirectoryIterator($dir);
 
@@ -48,6 +55,12 @@ class Kohana_Plugins
 					// Is directory?
 					if ( $plugin->isDir() && !$plugin->isDot() )
 					{
+						// if there's no plugin.php in this folder, ignore it
+						if(!file_exists($plugin->getPath().DIRECTORY_SEPARATOR.'plugin.php'))
+						{
+							continue;
+						}
+
 						// Store plugin in our pool
 						self::$plugins_pool[ $plugin->getFilename() ]['plugin'] = ucfirst($plugin->getFilename());
 						self::$plugins_pool[ $plugin->getFilename() ]['path'] = $dir;
@@ -74,8 +87,15 @@ class Kohana_Plugins
 			$config_file = $plugin_path . "config.php";
 			$config = (file_exists($config_file)) ? include_once $config_file : array();
 
+			$inst = new self::$plugins_pool[$plugin]['plugin']($plugin, $config);
+
+			if(!is_a($inst, 'Plugin'))
+			{
+				throw new Kohana_Exception('The plugin definition of ":plugin" is invalid', array(':plugin' => $plugin));
+			}
+
 			//load the plugin class
-			self::$plugins_pool[$plugin]['instance'] = new self::$plugins_pool[$plugin]['plugin']($plugin, $config);
+			self::$plugins_pool[$plugin]['instance'] = $inst;
 		}
 
 		return self::$plugins_pool[$plugin]['instance'];
