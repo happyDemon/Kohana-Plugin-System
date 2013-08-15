@@ -52,7 +52,7 @@ abstract class Kohana_Plugin
 	 * @throws Kohana_Exception
 	 */
 	public function install() {
-		if(Plugins::$manager->is_installed())
+		if(Plugins::$manager->is_installed($this->_name))
 		{
 			throw new Kohana_Exception('The plugin ":plugin" is already installed.', array(':plugin' => $this->_name));
 		}

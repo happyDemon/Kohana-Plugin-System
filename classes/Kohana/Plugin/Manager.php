@@ -20,7 +20,7 @@ abstract class Kohana_Plugin_Manager
 	 * returns an array with these keys: name, installed, active.
 	 * returns false if no plugin was found.
 	 *
-	 * @param $plugin Name of the plugin
+	 * @param string $plugin Name of the plugin
 	 * @return array|false
 	 */
 	abstract public function get($plugin);
@@ -38,7 +38,7 @@ abstract class Kohana_Plugin_Manager
 	 * Throws an exception if the plugin hasn't been listed.
 	 * Returns false if the plugin hasn't been installed yet.
 	 *
-	 * @param $plugin
+	 * @param string $plugin Name of the plugin
 	 * @return bool
 	 */
 	abstract public function activate($plugin);
@@ -46,7 +46,7 @@ abstract class Kohana_Plugin_Manager
 	/**
 	 * Deactivate a plugin.
 	 *
-	 * @param $plugin
+	 * @param string $plugin Name of the plugin
 	 * @return bool
 	 */
 	abstract public function deactivate($plugin);
@@ -56,8 +56,8 @@ abstract class Kohana_Plugin_Manager
 	 *
 	 * returns false if there's already a plugin listed with that name.
 	 *
-	 * @param $plugin
-	 * @param bool $installed
+	 * @param string $plugin Name of the plugin
+	 * @param bool $installed Is the plugin already installed?
 	 * @return bool
 	 */
 	abstract public function add($plugin, $installed=false);
@@ -67,7 +67,7 @@ abstract class Kohana_Plugin_Manager
 	 *
 	 * returns false if already installed.
 	 *
-	 * @param $plugin
+	 * @param string $plugin Name of the plugin
 	 * @return bool
 	 */
 	abstract public function install($plugin);
@@ -75,7 +75,7 @@ abstract class Kohana_Plugin_Manager
 	/**
 	 * Check if a plugin was installed.
 	 *
-	 * @param $plugin
+	 * @param string $plugin Name of the plugin
 	 * @return bool
 	 */
 	abstract public function is_installed($plugin);
@@ -83,8 +83,8 @@ abstract class Kohana_Plugin_Manager
 	/**
 	 * Initiate a plugin manager.
 	 *
-	 * @param $type The name of the driver
-	 * @param $config array Config options for the specific driver
+	 * @param string $type The name of the driver
+	 * @param array $config array Config options for the specific driver
 	 * @return Config_Manager
 	 */
 	static public function factory($type, $config) {
