@@ -10,3 +10,7 @@ Simply add the folder to your Kohana modules directory, enable it in your bootst
 Take a look at the example plugin to see how it works. But much like the modules system in Kohana, each plugin has an init.php file which allows you to bootstrap your plugin.
 
 **Requires happydemon/arr for the Config driver of Plugin_Manager**
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/happyDemon/kohana-plugin-system/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
